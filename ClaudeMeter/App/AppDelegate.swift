@@ -20,6 +20,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     #endif
 
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        // Menu bar only: enforce no Dock icon even if LSUIElement is missing from the built Info.plist.
+        NSApp.setActivationPolicy(.accessory)
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         SessionKeyImportPromptCoordinator.install()
 
